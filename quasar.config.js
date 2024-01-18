@@ -53,7 +53,7 @@ module.exports = configure(function (/* ctx */) {
         node: 'node16',
       },
 
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -88,6 +88,7 @@ module.exports = configure(function (/* ctx */) {
             exclude: ['**/components/**'], // 기본으로 pages 안의 .vue 파일을 라우트로 자동 설정하는데 pages 안의 컴포넌트 용의 폴더도 자동으로 라우트 설정 되는것을 방지 하기 위함
           },
         ],
+        ['vite-plugin-vue-layouts', {}],
       ],
     },
 
