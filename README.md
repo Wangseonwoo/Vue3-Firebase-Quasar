@@ -187,3 +187,17 @@ const Router = createRouter({
 
 > 폴더명 [id]로 생성 후 컴포넌트 페이지 등록  
 > ex) posts 폴더 확인
+
+## Alert Component
+
+### outline 클래스 관련
+
+```html
+<q-input outlined />
+```
+
+```html
+<q-btn outline />
+```
+
+> 버튼 요소는 outline 인풋 요소는 outlined
