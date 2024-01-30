@@ -188,9 +188,11 @@ const Router = createRouter({
 > 폴더명 [id]로 생성 후 컴포넌트 페이지 등록  
 > ex) posts 폴더 확인
 
-## Alert Component
+<br><br>
 
-### outline 클래스 관련
+## 3. Alert Component
+
+### 1. outline 클래스 관련
 
 ```html
 <q-input outlined />
@@ -201,3 +203,37 @@ const Router = createRouter({
 ```
 
 > 버튼 요소는 outline 인풋 요소는 outlined
+
+<br>
+
+### 2. Dynamic Component
+
+```html
+<component :is="authViewComponents[viewMode]" @change-view="changeViewMode" />
+```
+
+```js
+const authViewComponents = {
+  SignInForm,
+  SignUpForm,
+  FindPasswordForm,
+};
+```
+
+<br>
+
+### 3. Define Async Component
+
+> lazy load (불필요한 컴포넌트들 까지 로드를 하는걸 발지)를 통하여 네트워크 통신 속도 증가
+
+```js
+import { defineAsyncComponent } from 'vue';
+
+const authViewComponents = {
+  SignInForm: defineAsyncComponent(() => import('./SignInForm.vue')),
+  SignUpForm: defineAsyncComponent(() => import('./SignUpForm.vue')),
+  FindPasswordForm: defineAsyncComponent(() =>
+    import('./FindPasswordForm.vue'),
+  ),
+};
+```
