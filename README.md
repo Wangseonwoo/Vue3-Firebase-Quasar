@@ -237,3 +237,7 @@ const authViewComponents = {
   ),
 };
 ```
+
+<br><br>
+
+## 4. Event 실행
