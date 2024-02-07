@@ -241,3 +241,25 @@ const authViewComponents = {
 <br><br>
 
 ## 4. Event 실행
+
+<br><br>
+
+## 5. Firebase 프로젝트 생성
+
+> https://console.firebase.google.com/?hl=ko
+
+#### 웹 등록 진행을 위해 프로젝트 생성후 앱 등록 아이콘 클릭
+
+#### 웹 등록 후 설치 진행
+
+```bash
+npm install firebase
+```
+
+#### quasar new boot [파일명] 으로 부트파일 생성 후 스크립트 파일 복붙
+
+#### quasar.config.js 파일에서 boot 검색 후 등록
+
+#### 빌드 클릭 후 원하는 빌드 클릭 활성화 시키기
+
+#### 해당 공식문서로 이동하여 추가해야 하는 코드들 찾아서 추가
