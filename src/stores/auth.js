@@ -14,6 +14,7 @@ export const useAuthStore = defineStore('auth', () => {
         photoURL: userData.photoURL,
         displayName: userData.displayName,
         email: userData.email,
+        emailVerified: userData.emailVerified,
       };
     } else {
       user.value = null;

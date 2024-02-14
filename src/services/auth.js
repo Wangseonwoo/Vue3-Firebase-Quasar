@@ -1,6 +1,7 @@
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -28,7 +29,7 @@ export async function signUpWithEmail({ email, password, nickname }) {
     displayName: nickname,
     photoURL: generateDefaultPhotoURL(user.uid),
   });
-  console.log('user: ', user);
+  sendVerificationEmail();
 }
 
 export function generateDefaultPhotoURL(uid) {
@@ -38,4 +39,8 @@ export function generateDefaultPhotoURL(uid) {
 export async function SignInWithEmail({ email, password }) {
   const { user } = await signInWithEmailAndPassword(auth, email, password);
   return user;
+}
+
+export async function sendVerificationEmail() {
+  await sendEmailVerification(auth.currentUser);
 }
