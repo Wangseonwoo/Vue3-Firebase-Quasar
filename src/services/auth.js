@@ -1,14 +1,12 @@
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-<<<<<<< HEAD
   sendEmailVerification,
-=======
   sendPasswordResetEmail,
->>>>>>> 3d92cd24987f93d40b1a47a72cfb81ecfe0fa08f
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateEmail,
   updatePassword,
   updateProfile,
 } from 'firebase/auth';
@@ -46,15 +44,24 @@ export async function SignInWithEmail({ email, password }) {
   return user;
 }
 
-<<<<<<< HEAD
-export async function sendVerificationEmail() {
-  await sendEmailVerification(auth.currentUser);
-=======
 export async function sendPasswordReset(email) {
   await sendPasswordResetEmail(auth, email);
 }
 
 export async function updateUserPassword(nesPassword) {
   await updatePassword(auth.currentUser, nesPassword);
->>>>>>> 3d92cd24987f93d40b1a47a72cfb81ecfe0fa08f
+}
+
+export async function sendVerificationEmail() {
+  await sendEmailVerification(auth.currentUser);
+}
+
+export async function updateUserProfile(displayName) {
+  await updateProfile(auth.currentUser, {
+    displayName,
+  });
+}
+
+export async function updateUserEmail(email) {
+  await updateEmail(auth.currentUser, email);
 }
