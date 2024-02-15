@@ -269,3 +269,26 @@ npm install firebase
 ## 6. Firebase 템플릿 변경
 
 #### templates 접속 후 수정 진행
+
+<br><br>
+
+## 7. Vue Use
+
+#### 다양한 컴포저블 함수가 있는 유틸리티성 라이브러리
+
+### 설치
+
+```bash
+npm i @vueuse/core
+```
+
+#### store 폴더
+
+```js
+import { useLocalStorage } from '@vueuse/core';
+
+// const user = ref(null);
+const user = useLocalStorage('auth/user', null, {
+  serializer: StorageSerializers.object, // serializer: 옵션 값으로  데이터 값을 변환해 주는 기능 StorageSerializers.object: 오브젝트형 스트링으로 변환
+});
+```
