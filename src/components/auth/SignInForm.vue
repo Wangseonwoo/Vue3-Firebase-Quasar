@@ -10,6 +10,7 @@
         outlined
         dense
       />
+      <DisplayError :code="error?.code" />
       <div>
         <q-btn
           type="submit"
@@ -17,6 +18,7 @@
           class="full-width"
           unelevated
           color="primary"
+          :loading="isLoading"
         />
         <div class="flex justify-between">
           <q-btn
@@ -54,9 +56,15 @@
 import { signInWithGoogle, SignInWithEmail } from 'src/services';
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
+import DisplayError from '../DisplayError.vue';
+import { getErrorMessage } from 'src/utils/firebase/error-message';
+
 const emit = defineEmits(['changeView', 'closeDialog']);
 
 const $q = useQuasar();
+
+const isLoading = ref(false);
+const error = ref(null);
 
 // 이메일 로그인
 const form = ref({
@@ -65,9 +73,20 @@ const form = ref({
 });
 
 const handleSignInEmail = async () => {
-  await SignInWithEmail(form.value);
-  $q.notify('환영합니다 : )');
-  emit('closeDialog');
+  try {
+    isLoading.value = true;
+    await SignInWithEmail(form.value);
+    $q.notify('환영합니다 : )');
+    emit('closeDialog');
+  } catch (err) {
+    error.value = err;
+    $q.notify({
+      type: 'negative',
+      message: getErrorMessage(err.code),
+    });
+  } finally {
+    isLoading.value = false;
+  }
 };
 
 // 로그인 (구글)
